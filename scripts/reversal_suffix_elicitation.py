@@ -1,12 +1,17 @@
 #reversal
 import argparse
 import os
-dir_list = os.chdir('./../reverse-dynamics-nlp/')
+dir_list = os.chdir('/home/haokunch/llm-auditing-unlearning/reverse-dynamics-nlp/')
 
+import sys 
+sys.path.append("..") 
 import torch
 from datasets import load_dataset
 from transformers import AutoTokenizer, GPTNeoXForCausalLM
-from src import *
+from src.utils import *
+from src.bayesian_sampling import ReversalLMPrior, ReversalEmpiricalPrior
+from src.gcg import GreedyCoordinateGradient
+from src.rm_sampling import ReverseModelSampler, ReverseModelSamplerBeamSearch
 import pickle
 
 import time
